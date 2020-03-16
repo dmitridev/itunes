@@ -61,7 +61,8 @@ lombok (https://projectlombok.org/features/all).
 Если у вас триллион ошибок при компиляции - проверьте, 
 включен ли ``annotation processing`` в настройках IDEA и установлен ли плагин lombok.
 
-Для миграций используется liquibase (https://www.liquibase.org/documentation/changes).
+Для миграций используется liquibase (https://www.liquibase.org/documentation/changes), 
+файлы миграции находятся в директории ``src/main/resources/db/include``
 
 - https://www.baeldung.com/persistence-with-spring-series - гайды по работе с Hibernate
 - https://www.baeldung.com/rest-with-spring-series - гайды по работе с REST API
