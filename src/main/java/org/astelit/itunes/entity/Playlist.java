@@ -2,7 +2,7 @@ package org.astelit.itunes.entity;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.astelit.itunes.contstraints.PlaylistName;
+import org.astelit.itunes.contstraint.PlaylistName;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;

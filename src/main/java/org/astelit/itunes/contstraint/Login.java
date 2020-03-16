@@ -1,4 +1,4 @@
-package org.astelit.itunes.contstraints;
+package org.astelit.itunes.contstraint;
 
 import org.hibernate.validator.constraints.Length;
 
