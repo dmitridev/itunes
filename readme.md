@@ -47,7 +47,7 @@
 После установки IDEA установите плагин lombok https://plugins.jetbrains.com/plugin/6317-lombok
 
 Открыть в IDEA файл build.gradle, заимпортить проект, для запуска использовать таску bootRun.
-Аналогично в командной строке можно выполнить ``gradlew bootRun``
+Аналогично в командной строке можно выполнить ``gradlew bootRun``.
 
 После запуска будет доступен интерфейс Swagger для тестирования API по адресу http://localhost:8080/swagger-ui.html
 
@@ -59,7 +59,8 @@
 Для генерации геттеров/сеттеров/конструкторов используются аннотации 
 lombok (https://projectlombok.org/features/all).
 Если у вас триллион ошибок при компиляции - проверьте, 
-включен ли ``annotation processing`` в настройках IDEA и установлен ли плагин lombok.
+включен ли ``annotation processing`` в настройках IDEA и установлен ли плагин lombok. 
+При импорте редактор сам предложит включить процессинг -> внимание на правый нижний угол редактора.
 
 Для миграций используется liquibase (https://www.liquibase.org/documentation/changes), 
 файлы миграции находятся в директории ``src/main/resources/db/include``
