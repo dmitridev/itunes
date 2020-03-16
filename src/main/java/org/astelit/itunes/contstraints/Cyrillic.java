@@ -12,7 +12,7 @@ import static java.lang.annotation.ElementType.*;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 @NotEmpty
-@Pattern(regexp = "^[а-яА-Я]*$", message = "содержит недопустимые символы")
+@Pattern(regexp = "^[а-яА-Я]*$", message = "должен состоять из русских букв")
 @Target({METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE})
 @Retention(RUNTIME)
 @Documented
