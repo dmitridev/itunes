@@ -47,6 +47,16 @@ JAVA_HOME указывает на верную директорию.
 В приложении используется встроенная база данных H2, 
 так что подключать ничего не нужно. Файл генерируется в директории ``out``
 
+Для генерации геттеров/сеттеров/конструкторов используются аннотации 
+lombok (https://projectlombok.org/features/all).
+Если у вас триллион ошибок при компиляции - проверьте, 
+включен ли ``annotation processing`` в настройках IDEA.
+
+Для миграций используется liquibase (https://www.liquibase.org/documentation/changes).
+
+- https://www.baeldung.com/persistence-with-spring-series - гайды по работе с Hibernate
+- https://www.baeldung.com/rest-with-spring-series - гайды по работе с REST API
+
 ### Структура проекта
 ```
 ├───src
@@ -103,11 +113,6 @@ JAVA_HOME указывает на верную директорию.
 
 ### Цепочка зависимостей пакетов внутри приложения
 controller <-> dto <-> service <-> entity <-> repository
-
-### Полезные ссылки
-- https://www.baeldung.com/persistence-with-spring-series
-- https://www.baeldung.com/rest-with-spring-series
-- https://www.liquibase.org/documentation/changes
 
 ### Советы
 Используйте следующие методы для работы с ресурсами:

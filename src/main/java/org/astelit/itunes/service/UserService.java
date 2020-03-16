@@ -22,26 +22,4 @@ public class UserService {
     private final UserRepository repository;
     private final AuthenticationProperties properties;
 
-    public AuthenticationToken authenticate(AuthenticationRequest request) {
-        String digest = DigestUtils.md5DigestAsHex(request.getPassword().getBytes());
-        boolean exists = repository.existsByLoginAndPassword(request.getLogin(), digest);
-
-        if (!exists)
-            throw new BadRequestException("Invalid login or password");
-
-        Calendar calendar = Calendar.getInstance();
-        calendar.add(Calendar.DAY_OF_YEAR, 14);
-        Date expiration = calendar.getTime();
-
-        Claims claims = new DefaultClaims();
-        claims.setExpiration(expiration);
-        claims.setSubject(request.getLogin());
-
-        String token = Jwts.builder()
-                .addClaims(claims)
-                .signWith(SignatureAlgorithm.ES512, properties.getSalt())
-                .compact();
-
-        return new AuthenticationToken(token, expiration.toInstant().getEpochSecond(), claims);
-    }
 }
