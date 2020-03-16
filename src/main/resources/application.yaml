@@ -7,8 +7,5 @@ spring:
     open-in-view: false
   liquibase:
     change-log: classpath:db/changelog.yaml
-
-authentication:
-  token:
-    key: 'randomstring'
-    lifetime: 21600
+  application:
+    name: itunes
