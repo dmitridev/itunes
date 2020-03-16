@@ -17,7 +17,7 @@ public class Playlist extends BaseEntity {
 
     @NotNull
     @JoinColumn(name = "id_author")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private User author;
 
     // TODO: Tracks
