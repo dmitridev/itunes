@@ -1,0 +1,25 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert_users
+      author: vast
+      tagDatabase: Version 1
+      changes:
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: login
+                  type: varchar
+                  value: root
+              - column:
+                  name: name
+                  type: varchar
+                  value: Администратор
+              - column:
+                  name: role
+                  type: varchar
+                  value: 'ADMIN'
+              - column:
+                  name: password
+                  type: CHARACTER VARYING
+                  value: e10adc3949ba59abbe56e057f20f883e

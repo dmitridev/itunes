@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    url: jdbc:h2:file:./out/itunes.db
+    username: dev
+    password: dev
+  jpa:
+    open-in-view: false
+  liquibase:
+    change-log: classpath:db/changelog.yaml
+
+authentication:
+  token:
+    key: 'randomstring'
+    lifetime: 21600
