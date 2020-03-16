@@ -9,9 +9,11 @@ import org.astelit.itunes.entity.User;
 @Setter
 public class UserResponse extends EntityResponse {
     private final String login;
+    private final String name;
 
     public UserResponse(User user) {
         super(user);
         this.login = user.getLogin();
+        this.name = user.getName();
     }
 }

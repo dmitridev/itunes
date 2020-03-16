@@ -16,7 +16,7 @@ public class Playlist extends BaseEntity {
     private String name;
 
     @NotNull
-    @JoinColumn(name = "id_user")
+    @JoinColumn(name = "id_author")
     @ManyToOne(fetch = FetchType.LAZY)
     private User author;
 

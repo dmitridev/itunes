@@ -3,6 +3,7 @@ package org.astelit.itunes.dto.user;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.astelit.itunes.contstraints.Cyrillic;
 import org.astelit.itunes.contstraints.Login;
 
 @Getter
@@ -11,4 +12,7 @@ import org.astelit.itunes.contstraints.Login;
 public class CreateUserRequest {
     @Login
     private String login;
+
+    @Cyrillic
+    private String name;
 }

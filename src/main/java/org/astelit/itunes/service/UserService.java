@@ -22,7 +22,10 @@ public class UserService {
         if (repository.existsByLogin(request.getLogin()))
             throw new BadRequestException("Login " + request.getLogin() + " already taken");
 
-        User user = new User(request.getLogin());
+        User user = new User();
+        user.setLogin(request.getLogin());
+        user.setName(request.getName());
+
         repository.save(user);
         return new UserResponse(user);
     }
@@ -33,6 +36,8 @@ public class UserService {
 
         User user = repository.findById(request.getId()).orElseThrow(USER_NOT_FOUND);
         user.setLogin(request.getLogin());
+        user.setName(request.getName());
+
         repository.save(user);
         return new UserResponse(user);
     }

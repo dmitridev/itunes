@@ -1,11 +1,11 @@
 databaseChangeLog:
   - changeSet:
-      id: create_table_users
+      id: create_table_playlists
       author: vast
       tagDatabase: Version 1
       changes:
         - createTable:
-            tableName: users
+            tableName: playlists
             columns:
               - column:
                   name: id
@@ -15,22 +15,24 @@ databaseChangeLog:
                     primaryKey: true
                     nullable: false
               - column:
-                  name: login
-                  type: varchar(64)
-                  constraints:
-                    nullable: false
-              - column:
                   name: name
                   type: varchar
                   constraints:
                     nullable: false
               - column:
-                  name: role
-                  type: varchar
+                  name: id_author
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_playlists_author
+                    references: users(id)
+              - column:
+                  name: created_at
+                  type: bigint
                   constraints:
                     nullable: false
               - column:
-                  name: password
-                  type: varchar
+                  name: updated_at
+                  type: bigint
                   constraints:
                     nullable: false

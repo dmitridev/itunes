@@ -3,14 +3,12 @@ package org.astelit.itunes.entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.astelit.itunes.contstraints.Cyrillic;
 import org.astelit.itunes.contstraints.Login;
-import org.astelit.itunes.enums.Role;
-import org.hibernate.validator.constraints.Length;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -23,10 +21,9 @@ public class User extends BaseEntity {
     @Login
     private String login;
 
+    @Cyrillic
+    private String name;
+
     @OneToMany(mappedBy = "author")
     private Set<Playlist> playlists = new HashSet<>();
-
-    public User(String login) {
-        this.login = login;
-    }
 }
