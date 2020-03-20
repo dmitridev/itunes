@@ -4,8 +4,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.astelit.itunes.contstraint.PlaylistName;
+import org.astelit.itunes.entity.Song;
 
 import javax.validation.constraints.NotNull;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -17,5 +19,5 @@ public class PlaylistCreateRequest {
     @NotNull
     private Long author;
 
-    // TODO: tracks
+    private Set<Song> songList;
 }

@@ -6,6 +6,8 @@ import org.astelit.itunes.contstraint.PlaylistName;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "playlists")
@@ -20,5 +22,6 @@ public class Playlist extends BaseEntity {
     @ManyToOne(fetch = FetchType.EAGER)
     private User author;
 
-    // TODO: Tracks
+    @OneToMany(mappedBy="playlist",fetch = FetchType.EAGER)
+    Set<Song> songList = new HashSet<>();
 }
