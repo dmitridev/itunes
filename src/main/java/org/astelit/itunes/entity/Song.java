@@ -20,11 +20,11 @@ public class Song extends BaseEntity {
     @NotNull
     private int duration;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="album_id")
     private Album album;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="playlist_id")
     private Playlist playlist;
 }
