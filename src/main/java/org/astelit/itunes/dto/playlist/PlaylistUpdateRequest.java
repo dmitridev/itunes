@@ -19,5 +19,5 @@ public class PlaylistUpdateRequest {
     @PlaylistName
     private String name;
 
-    private Set<Song> songList;
+    private Long songList;
 }
