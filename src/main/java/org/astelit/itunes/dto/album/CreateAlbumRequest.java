@@ -23,7 +23,7 @@ public class CreateAlbumRequest {
     @ConfirmString
     private String genre;
 
-    private Artist artist;
+    private Long artist;
 
-    private Set<Song> songsList;
+    private Long songsList;
 }
