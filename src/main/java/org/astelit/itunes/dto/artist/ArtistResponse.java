@@ -18,11 +18,10 @@ public class ArtistResponse extends EntityResponse {
     @ConfirmString
     private String name;
 
-    private Set<Album> albumsList;
+    private Long albumsList;
 
     public ArtistResponse(Artist artist){
         super(artist);
         this.name = artist.getName();
-        this.albumsList = artist.getAlbumsList();
     }
 }
