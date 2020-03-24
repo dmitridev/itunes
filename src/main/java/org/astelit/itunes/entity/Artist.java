@@ -20,6 +20,6 @@ public class Artist extends BaseEntity {
     private String name;
 
 
-    @OneToMany(mappedBy="artist",fetch = FetchType.EAGER)
+    @OneToMany(mappedBy="artist",fetch = FetchType.LAZY)
     private Set<Album> albumsList = new HashSet<>();
 }
