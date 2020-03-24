@@ -19,9 +19,9 @@ public class Playlist extends BaseEntity {
 
     @NotNull
     @JoinColumn(name = "id_author")
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     private User author;
 
-    @OneToMany(mappedBy="playlist",fetch = FetchType.EAGER)
+    @OneToMany(mappedBy="playlist",fetch = FetchType.LAZY)
     Set<Song> songList = new HashSet<>();
 }
