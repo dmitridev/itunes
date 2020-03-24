@@ -25,16 +25,14 @@ public class AlbumResponse extends EntityResponse {
     @ConfirmString
     private String genre;
 
-    private Artist artist;
+    private Long artist;
 
-    private Set<Song> songsList;
+    private Long songsList;
 
     public AlbumResponse(Album album){
         super(album);
         this.title = album.getTitle();
         this.releaseDate = album.getReleaseDate();
         this.genre = album.getGenre();
-        this.songsList = album.getSongsList();
-        this.artist = album.getArtist();
     }
 }
