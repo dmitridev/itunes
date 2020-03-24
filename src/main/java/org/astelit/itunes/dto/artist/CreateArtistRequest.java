@@ -17,8 +17,5 @@ public class CreateArtistRequest {
     @ConfirmString
     private String name;
 
-    private Set<Album> albumsList = new HashSet<Album>();
-
-
-
+    private Long albumsList;
 }
