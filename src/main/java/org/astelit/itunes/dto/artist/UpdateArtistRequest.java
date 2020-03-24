@@ -23,6 +23,6 @@ public class UpdateArtistRequest {
     @ConfirmString
     private String name;
 
-    private Set<Album> albumsList = new HashSet<Album>();
+    private Long albumsList;
 
 }
