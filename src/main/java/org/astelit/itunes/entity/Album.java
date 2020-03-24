@@ -29,11 +29,11 @@ public class Album extends BaseEntity{
 
 
     @JoinColumn(name="artist_id")
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     private Artist artist;
 
 
-    @OneToMany(mappedBy="album",fetch=FetchType.EAGER)
+    @OneToMany(mappedBy="album",fetch=FetchType.LAZY)
     private Set<Song> songsList = new HashSet<>();
 
 }
