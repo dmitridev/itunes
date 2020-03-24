@@ -16,11 +16,10 @@ import java.util.Set;
 public class PlaylistResponse extends EntityResponse {
     private final String name;
 
-    private Set<Song> songList;
+    private Long songList;
 
     public PlaylistResponse(Playlist playlist) {
         super(playlist);
         this.name = playlist.getName();
-        this.songList = playlist.getSongList();
     }
 }
