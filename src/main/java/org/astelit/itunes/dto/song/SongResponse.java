@@ -26,16 +26,14 @@ public class SongResponse extends EntityResponse {
     @NotNegative
     private int duration;
 
-    private Album album;
+    private Long album;
 
-    private Playlist playlist;
+    private Long playlist;
 
     public SongResponse(Song song){
         super(song);
         this.title = song.getTitle();
         this.duration = song.getDuration();
-        this.album = song.getAlbum();
-        this.playlist = song.getPlaylist();
     }
 
 }
