@@ -24,8 +24,8 @@ public class CreateSongRequest {
     @NotNegative
     private int duration;
 
-    private Album album;
+    private Long album;
 
-    private Playlist playlist;
+    private Long playlist;
 
 }
