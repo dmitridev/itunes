@@ -22,6 +22,6 @@ public class Playlist extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     private User author;
 
-    @OneToMany(mappedBy="playlist",fetch = FetchType.LAZY)
-    Set<Song> songList = new HashSet<>();
+    @ManyToMany(mappedBy="playlists")
+    Set<Song> songsList = new HashSet<>();
 }

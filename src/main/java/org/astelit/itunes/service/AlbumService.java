@@ -29,12 +29,13 @@ public class AlbumService {
     private final AlbumRepository repository;
     private final ArtistRepository artistRepository;
     private final SongRepository songRepository;
-    public AlbumResponse create(CreateAlbumRequest request){
+
+    public AlbumResponse create(CreateAlbumRequest request) {
         Album album = new Album();
         album.setTitle(request.getTitle());
         album.setGenre(request.getGenre());
         album.setReleaseDate(request.getReleaseDate());
-        if(request.getArtist() != 0){
+        if (request.getArtist() != 0) {
             Artist artist = artistRepository.findById(request.getArtist()).orElseThrow(ARTIST_NOT_FOUND);
             album.setArtist(artist);
         }
@@ -44,7 +45,7 @@ public class AlbumService {
         return new AlbumResponse(album);
     }
 
-    public AlbumResponse update(UpdateAlbumRequest request){
+    public AlbumResponse update(UpdateAlbumRequest request) {
         Album album = repository.findById(request.getId()).orElseThrow(ALBUM_NOT_FOUND);
 
         album.setTitle(request.getTitle());
@@ -55,26 +56,25 @@ public class AlbumService {
         return new AlbumResponse(album);
     }
 
-    public AlbumResponse read(long id){
+    public AlbumResponse read(long id) {
         Album album = repository.findById(id).orElseThrow(ALBUM_NOT_FOUND);
         return new AlbumResponse(album);
     }
 
-    public AlbumResponse delete(long id){
+    public AlbumResponse delete(long id) {
         Album album = repository.findById(id).orElseThrow(ALBUM_NOT_FOUND);
 
         repository.delete(album);
         return new AlbumResponse(album);
     }
 
-    public Page<AlbumResponse> search(AlbumSearchRequest request){
+    public Page<AlbumResponse> search(AlbumSearchRequest request) {
         return repository.search(request)
                 .map(AlbumResponse::new);
     }
 
 
-
-    public List<SongResponse> findSongsByAlbum(Long id){
+    public List<SongResponse> findSongsByAlbum(Long id) {
         return songRepository.findByAlbum_Id(id).stream()
                 .map(SongResponse::new)
                 .collect(Collectors.toList());

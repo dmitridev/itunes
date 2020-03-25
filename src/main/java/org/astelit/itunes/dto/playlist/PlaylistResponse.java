@@ -16,8 +16,6 @@ import java.util.Set;
 public class PlaylistResponse extends EntityResponse {
     private final String name;
 
-    
-
     public PlaylistResponse(Playlist playlist) {
         super(playlist);
         this.name = playlist.getName();

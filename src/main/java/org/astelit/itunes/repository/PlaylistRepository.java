@@ -20,12 +20,20 @@ public interface PlaylistRepository extends JpaRepository<Playlist, Long>, JpaSp
         return findAll((Specification<Playlist>) (root, query, cb) -> {
             List<Predicate> predicates = new ArrayList<>();
 
-            if (request.getAuthor() != null)
+            if (request.getAuthor() != null) {
                 predicates.add(cb.equal(root.get("author").get("id"), request.getAuthor()));
+                predicates.add(cb.like(cb.upper(root.get("name")), request.getLikeString()));
+            }
 
-            predicates.add(cb.like(cb.upper(root.get("name")), request.getLikeString()));
+            if (request.getAlbum() != null) {
+                predicates.add(cb.equal(root.get("album").get("id"), request.getAlbum()));
+            }
+
+            if (request.getSong() != null) {
+                predicates.add(cb.equal(root.get("song").get("id"), request.getSong()));
+            }
+
             query.orderBy(cb.desc(root.get("updatedAt")));
-
             return cb.and(predicates.toArray(new Predicate[0]));
         }, request.pageable());
     }

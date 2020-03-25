@@ -8,4 +8,8 @@ import org.astelit.itunes.dto.SearchRequest;
 @Setter
 public class PlaylistSearchRequest extends SearchRequest {
     private Long author;
+    private Long album;
+    private Long Song;
+
+
 }

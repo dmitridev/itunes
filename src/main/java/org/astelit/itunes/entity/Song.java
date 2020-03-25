@@ -7,6 +7,7 @@ import org.astelit.itunes.contstraint.Cyrillic;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Entity
 @Getter
@@ -24,7 +25,6 @@ public class Song extends BaseEntity {
     @JoinColumn(name="album_id")
     private Album album;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="playlist_id")
-    private Playlist playlist;
+    @ManyToMany(mappedBy="songsList")
+    private List<Playlist> playlists;
 }

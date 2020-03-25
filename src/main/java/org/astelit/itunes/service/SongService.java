@@ -27,7 +27,7 @@ public class SongService {
     private final SongRepository repository;
     private final AlbumRepository albumRepository;
 
-    public SongResponse create(CreateSongRequest request){
+    public SongResponse create(CreateSongRequest request) {
 
         Song song = new Song();
 
@@ -41,7 +41,7 @@ public class SongService {
         return new SongResponse(song);
     }
 
-    public SongResponse update(UpdateSongRequest request){
+    public SongResponse update(UpdateSongRequest request) {
         Song song = repository.findById(request.getId()).orElseThrow(SONG_NOT_FOUND);
 
         song.setTitle(request.getTitle());
@@ -51,26 +51,26 @@ public class SongService {
         return new SongResponse(song);
     }
 
-    public SongResponse read(long id){
+    public SongResponse read(long id) {
         Song song = repository.findById(id).orElseThrow(SONG_NOT_FOUND);
 
         return new SongResponse(song);
     }
 
-    public SongResponse delete(long id){
+    public SongResponse delete(long id) {
         Song song = repository.findById(id).orElseThrow(SONG_NOT_FOUND);
 
         repository.delete(song);
         return new SongResponse(song);
     }
 
-    public Page<SongResponse> search(SongSearchRequest request){
+    public Page<SongResponse> search(SongSearchRequest request) {
         return repository.search(request).map(SongResponse::new);
 
 
     }
 
-    public List<SongResponse> findSongsByAlbum(Long id){
+    public List<SongResponse> findSongsByAlbum(Long id) {
         return repository.findByAlbum_Id(id)
                 .stream()
                 .map(SongResponse::new)

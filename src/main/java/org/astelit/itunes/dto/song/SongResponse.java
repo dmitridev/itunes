@@ -26,8 +26,6 @@ public class SongResponse extends EntityResponse {
 
     private Long album;
 
-    private Long playlist;
-
     public SongResponse(Song song){
         super(song);
         this.title = song.getTitle();
