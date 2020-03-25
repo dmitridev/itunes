@@ -3,6 +3,7 @@ package org.astelit.itunes.controller;
 import lombok.RequiredArgsConstructor;
 import org.astelit.itunes.dto.SearchRequest;
 import org.astelit.itunes.dto.artist.ArtistResponse;
+import org.astelit.itunes.dto.artist.ArtistSearchRequest;
 import org.astelit.itunes.dto.artist.CreateArtistRequest;
 import org.astelit.itunes.dto.artist.UpdateArtistRequest;
 import org.astelit.itunes.service.ArtistService;
@@ -39,7 +40,7 @@ public class ArtistController {
     }
 
     @GetMapping
-    public Page<ArtistResponse> search(SearchRequest request){
+    public Page<ArtistResponse> search(ArtistSearchRequest request){
         return artistService.search(request);
     }
 }

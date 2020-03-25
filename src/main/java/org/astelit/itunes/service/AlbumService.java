@@ -3,6 +3,7 @@ package org.astelit.itunes.service;
 import lombok.RequiredArgsConstructor;
 import org.astelit.itunes.dto.SearchRequest;
 import org.astelit.itunes.dto.album.AlbumResponse;
+import org.astelit.itunes.dto.album.AlbumSearchRequest;
 import org.astelit.itunes.dto.album.CreateAlbumRequest;
 import org.astelit.itunes.dto.album.UpdateAlbumRequest;
 import org.astelit.itunes.dto.song.SongResponse;
@@ -66,8 +67,8 @@ public class AlbumService {
         return new AlbumResponse(album);
     }
 
-    public Page<AlbumResponse> search(SearchRequest request){
-        return repository.findByTitleIsLikeOrderByTitleAsc(request.getQuery(),request.pageable())
+    public Page<AlbumResponse> search(AlbumSearchRequest request){
+        return repository.search(request)
                 .map(AlbumResponse::new);
     }
 

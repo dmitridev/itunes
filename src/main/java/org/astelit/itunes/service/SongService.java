@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.astelit.itunes.dto.SearchRequest;
 import org.astelit.itunes.dto.song.CreateSongRequest;
 import org.astelit.itunes.dto.song.SongResponse;
+import org.astelit.itunes.dto.song.SongSearchRequest;
 import org.astelit.itunes.dto.song.UpdateSongRequest;
 import org.astelit.itunes.entity.Album;
 import org.astelit.itunes.entity.Song;
@@ -63,9 +64,11 @@ public class SongService {
         return new SongResponse(song);
     }
 
-    public Page<SongResponse> search(SearchRequest request){
-           return repository.findByTitleIsLikeOrderByTitleAsc(request.getQuery(),request.pageable())
-                      .map(SongResponse::new);
+    public Page<SongResponse> search(SongSearchRequest request){
+        return repository.search(request).map(SongResponse::new);
+
+        // return repository.findByTitleIsLikeOrderByTitleAsc(request.getQuery(),request.pageable())
+            //          .map(SongResponse::new);
     }
 
     public List<SongResponse> findSongsByAlbum(Long id){

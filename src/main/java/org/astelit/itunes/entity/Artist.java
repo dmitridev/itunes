@@ -1,14 +1,13 @@
 package org.astelit.itunes.entity;
 
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
+
 import lombok.Getter;
 import lombok.Setter;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -22,4 +21,8 @@ public class Artist extends BaseEntity {
 
     @OneToMany(mappedBy="artist",fetch = FetchType.LAZY)
     private Set<Album> albumsList = new HashSet<>();
+
+
+
+
 }

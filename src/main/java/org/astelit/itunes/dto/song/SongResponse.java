@@ -33,7 +33,6 @@ public class SongResponse extends EntityResponse {
         this.title = song.getTitle();
         this.duration = song.getDuration();
         this.album = song.getAlbum().getId();
-        this.playlist = song.getPlaylist().getId();
     }
 
 

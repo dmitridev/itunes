@@ -1,5 +1,6 @@
 package org.astelit.itunes.entity;
 
+import javax.annotation.ManagedBean;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
@@ -9,6 +10,7 @@ import org.astelit.itunes.contstraint.ConfirmString;
 
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 
@@ -16,7 +18,9 @@ import java.util.Set;
 @Table(name="albums")
 @Getter
 @Setter
+@ManagedBean
 public class Album extends BaseEntity{
+
 
     @ConfirmString
     private String title;

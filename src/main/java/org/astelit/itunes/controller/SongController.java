@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.astelit.itunes.dto.SearchRequest;
 import org.astelit.itunes.dto.song.CreateSongRequest;
 import org.astelit.itunes.dto.song.SongResponse;
+import org.astelit.itunes.dto.song.SongSearchRequest;
 import org.astelit.itunes.dto.song.UpdateSongRequest;
 import org.astelit.itunes.service.SongService;
 import org.springframework.data.domain.Page;
@@ -41,7 +42,7 @@ public class SongController {
     }
 
     @GetMapping
-    public Page<SongResponse> search(SearchRequest request){return songService.search(request);}
+    public Page<SongResponse> search(SongSearchRequest request){return songService.search(request);}
 
 
 
