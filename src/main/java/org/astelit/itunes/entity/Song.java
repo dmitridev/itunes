@@ -14,7 +14,7 @@ import javax.validation.constraints.NotNull;
 @Table(name="songs")
 public class Song extends BaseEntity {
 
-    @Cyrillic
+    @NotNull
     private String title;
 
     @NotNull

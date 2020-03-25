@@ -7,12 +7,14 @@ import org.astelit.itunes.dto.album.AlbumResponse;
 import org.astelit.itunes.dto.album.CreateAlbumRequest;
 import org.astelit.itunes.dto.album.UpdateAlbumRequest;
 import org.astelit.itunes.dto.artist.ArtistResponse;
+import org.astelit.itunes.dto.song.SongResponse;
 import org.astelit.itunes.entity.Album;
 import org.astelit.itunes.service.AlbumService;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("api/albums")
@@ -44,4 +46,10 @@ public class AlbumController {
     public Page<AlbumResponse> search(SearchRequest request){
         return albumService.search(request);
     }
+
+    @GetMapping("{id}/songs")
+    public List<SongResponse> findSongsById(@PathVariable("id") long id){
+        return albumService.findSongsByAlbum(id);
+    }
+
 }

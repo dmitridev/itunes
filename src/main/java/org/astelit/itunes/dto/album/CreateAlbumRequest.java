@@ -1,6 +1,7 @@
 package org.astelit.itunes.dto.album;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.astelit.itunes.contstraint.ConfirmString;
 import org.astelit.itunes.entity.Artist;
@@ -12,6 +13,7 @@ import java.util.Set;
 
 @Getter
 @Setter
+@NoArgsConstructor
 public class CreateAlbumRequest {
 
     @ConfirmString
@@ -25,5 +27,4 @@ public class CreateAlbumRequest {
 
     private Long artist;
 
-    private Long songsList;
 }

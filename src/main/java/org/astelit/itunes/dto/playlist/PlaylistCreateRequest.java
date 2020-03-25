@@ -19,5 +19,5 @@ public class PlaylistCreateRequest {
     @NotNull
     private Long author;
 
-    private Long songList;
+
 }

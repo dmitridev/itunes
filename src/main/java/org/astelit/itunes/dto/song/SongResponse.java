@@ -11,14 +11,12 @@ import org.astelit.itunes.entity.Playlist;
 import org.astelit.itunes.entity.Song;
 
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
 
 @Setter
 @Getter
 public class SongResponse extends EntityResponse {
-
-    @Id
-    private Long id;
 
     @ConfirmString
     private String title;
@@ -34,6 +32,9 @@ public class SongResponse extends EntityResponse {
         super(song);
         this.title = song.getTitle();
         this.duration = song.getDuration();
+        this.album = song.getAlbum().getId();
+        this.playlist = song.getPlaylist().getId();
     }
+
 
 }

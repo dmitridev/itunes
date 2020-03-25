@@ -11,6 +11,7 @@ import org.astelit.itunes.entity.Playlist;
 import org.astelit.itunes.entity.Song;
 
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
 
 @Getter
@@ -18,7 +19,8 @@ import javax.persistence.Id;
 @NoArgsConstructor
 public class UpdateSongRequest {
 
-    @Id
+    
+    @NotNull
     private Long id;
 
     @ConfirmString

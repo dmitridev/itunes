@@ -17,8 +17,6 @@ import static java.lang.annotation.ElementType.TYPE_USE;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 @NotNull
-@Length(min = 1, max = 4)
-@Pattern(regexp = "^[0-9]*$", message = "cодержит недопустимые символы")
 @Min(value = -1,message="Значение не может быть отрицательным")
 @Target({METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE})
 @Retention(RUNTIME)

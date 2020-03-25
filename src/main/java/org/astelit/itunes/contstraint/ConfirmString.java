@@ -16,7 +16,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 @NotNull
 @Length(min = 2, max = 64)
-@Pattern(regexp = "^[a-zA-Z0-9]*$", message = "cодержит недопустимые символы")
+@Pattern(regexp = "^[a-zA-Z0-9 ]*$", message = "cодержит недопустимые символы")
 @Target({METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE})
 @Retention(RUNTIME)
 @Documented

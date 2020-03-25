@@ -25,10 +25,8 @@ public class ArtistService {
     public ArtistResponse create(CreateArtistRequest request){
         Artist artist = new Artist();
         artist.setName(request.getName());
-        //artist.setAlbumsList(request.getAlbumsList());
 
         repository.save(artist);
-
         return new ArtistResponse(artist);
     }
 

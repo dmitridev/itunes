@@ -1,6 +1,7 @@
 package org.astelit.itunes.dto.artist;
 
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import org.astelit.itunes.contstraint.ConfirmString;
 import org.astelit.itunes.dto.EntityResponse;
@@ -14,14 +15,12 @@ import java.util.Set;
 @Getter
 @Setter
 public class ArtistResponse extends EntityResponse {
-
     @ConfirmString
     private String name;
-
-    private Long albumsList;
 
     public ArtistResponse(Artist artist){
         super(artist);
         this.name = artist.getName();
     }
+
 }

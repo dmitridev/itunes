@@ -27,12 +27,12 @@ public class AlbumResponse extends EntityResponse {
 
     private Long artist;
 
-    private Long songsList;
-
     public AlbumResponse(Album album){
         super(album);
         this.title = album.getTitle();
         this.releaseDate = album.getReleaseDate();
         this.genre = album.getGenre();
+        this.artist = album.getArtist().getId();
+        
     }
 }

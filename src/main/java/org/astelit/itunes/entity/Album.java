@@ -29,7 +29,7 @@ public class Album extends BaseEntity{
 
 
     @JoinColumn(name="artist_id")
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Artist artist;
 
 

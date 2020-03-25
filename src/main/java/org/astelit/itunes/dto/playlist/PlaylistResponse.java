@@ -16,7 +16,7 @@ import java.util.Set;
 public class PlaylistResponse extends EntityResponse {
     private final String name;
 
-    private Long songList;
+    
 
     public PlaylistResponse(Playlist playlist) {
         super(playlist);

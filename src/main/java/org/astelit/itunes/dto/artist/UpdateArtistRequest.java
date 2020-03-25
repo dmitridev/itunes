@@ -17,12 +17,10 @@ import lombok.Setter;
 @NoArgsConstructor
 public class UpdateArtistRequest {
 
-    @Id
+    @NotNull
     private Long id;
 
     @ConfirmString
     private String name;
-
-    private Long albumsList;
 
 }
