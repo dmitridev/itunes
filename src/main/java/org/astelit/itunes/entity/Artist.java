@@ -6,6 +6,7 @@ import javax.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -20,7 +21,7 @@ public class Artist extends BaseEntity {
 
 
     @OneToMany(mappedBy="artist",fetch = FetchType.LAZY)
-    private Set<Album> albumsList = new HashSet<>();
+    private List<Album> albumsList = new ArrayList<>();
 
 
 

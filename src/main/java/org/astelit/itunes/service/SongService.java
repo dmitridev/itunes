@@ -67,8 +67,7 @@ public class SongService {
     public Page<SongResponse> search(SongSearchRequest request){
         return repository.search(request).map(SongResponse::new);
 
-        // return repository.findByTitleIsLikeOrderByTitleAsc(request.getQuery(),request.pageable())
-            //          .map(SongResponse::new);
+
     }
 
     public List<SongResponse> findSongsByAlbum(Long id){

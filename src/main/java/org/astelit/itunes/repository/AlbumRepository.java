@@ -37,7 +37,7 @@ public interface AlbumRepository extends JpaRepository<Album,Long>, JpaSpecifica
             }
 
 
-            return cb.and(predicateList.toArray(new Predicate[0]));
+            return cb.or(predicateList.toArray(new Predicate[0]));
         },request.pageable());
     }
 }

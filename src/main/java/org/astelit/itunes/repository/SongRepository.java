@@ -13,7 +13,10 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Expression;
 import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 
 
 public interface SongRepository  extends JpaRepository<Song,Long>, JpaSpecificationExecutor<Song> {
@@ -24,24 +27,26 @@ public interface SongRepository  extends JpaRepository<Song,Long>, JpaSpecificat
         return findAll((Specification<Song>) (root,query,cb) ->{
             List<Predicate> predicates = new ArrayList<>();
 
-            if(request.getName() !=null) {
-                predicates.add(cb.equal(root.get("song").get("title"), request.getName()));
-                predicates.add(cb.like(root.get("song").get("title"), request.getLikeName()));
+            if(request.getTitle() != null) {
+                predicates.add(cb.equal(root.get("title"),request.getTitle()));
+                predicates.add(cb.like(root.get("title"),request.getLikeTitle()));
             }
 
             if(request.getGenre() != null) {
                 predicates.add(cb.equal(root.get("album").get("genre"), request.getGenre()));
                 predicates.add(cb.like(root.get("album").get("genre"), request.getLikeGenre()));
             }
-            if(request.getAlbumName() != null) {
-                predicates.add(cb.equal(root.get("album").get("title"), request.getAlbumName()));
-                predicates.add(cb.like(root.get("album").get("title"), request.getAlbumName()));
+
+            if(request.getAlbumTitle() != null) {
+                predicates.add(cb.equal(root.get("album").get("title"),request.getAlbumTitle()));
+                 predicates.add(cb.like(root.get("album").get("title"), request.getLikeAlbumTitle()));
             }
-            if(request.getTitle() != null) {
-                predicates.add(cb.equal(root.get("album").get("artist").get("name"), request.getTitle()));
-                predicates.add(cb.like(root.get("album").get("artist").get("name"), request.getTitle()));
+
+            if(request.getArtistName() != null) {
+                predicates.add(cb.equal(root.get("album").get("artist").get("name"), request.getArtistName()));
+                predicates.add(cb.like(root.get("album").get("artist").get("name"), request.getLikeArtistName()));
             }
-            return cb.and(predicates.toArray(new Predicate[0]));
+            return cb.or(predicates.toArray(new Predicate[0]));
         },request.pageable());
     }
 

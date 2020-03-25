@@ -29,8 +29,17 @@ public interface ArtistRepository extends JpaRepository<Artist, Long>, JpaSpecif
         return findAll((Specification<Artist>) (root,query,cb) ->{
             List<Predicate> predicateList = new ArrayList<Predicate>();
 
+            if(request.getName() != null) {
+                predicateList.add(cb.equal(root.get("artist").get("name"), request.getName()));
+                predicateList.add(cb.like(root.get("artist").get("name"),request.getLikeName()));
+            }
 
-            return cb.and(predicateList.toArray(new Predicate[0]));
+            if(request.getGenre() != null) {
+                predicateList.add(cb.equal(root.get("artist").get("album").get("genre"), request.getGenre()));
+                predicateList.add(cb.like(root.get("artist").get("name"),request.getLikeName()));
+            }
+
+            return cb.or(predicateList.toArray(new Predicate[0]));
         },request.pageable());
     }
 }
