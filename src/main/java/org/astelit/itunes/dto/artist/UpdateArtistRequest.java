@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import java.util.HashSet;
 import java.util.Set;
+
 import lombok.Setter;
 
 
@@ -16,11 +17,9 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class UpdateArtistRequest {
-
     @NotNull
     private Long id;
 
     @ConfirmString
     private String name;
-
 }

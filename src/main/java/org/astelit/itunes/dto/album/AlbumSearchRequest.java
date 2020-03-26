@@ -9,8 +9,7 @@ import org.springframework.data.domain.Pageable;
 
 @Getter
 @Setter
-public class AlbumSearchRequest{
-
+public class AlbumSearchRequest {
     private String title;
 
     private String genre;
@@ -19,10 +18,16 @@ public class AlbumSearchRequest{
 
     private Integer size = 10;
 
-    public Pageable pageable(){return PageRequest.of(page,size);}
+    public Pageable pageable() {
+        return PageRequest.of(page, size);
+    }
 
-    public String getLikeTitle(){return "%" + title.toUpperCase() + "%";}
+    public String getLikeTitle() {
+        return "%" + title.toUpperCase() + "%";
+    }
 
-    public String getLikeGenre(){return "%" + genre.toUpperCase() + "%";}
+    public String getLikeGenre() {
+        return "%" + genre.toUpperCase() + "%";
+    }
 
 }

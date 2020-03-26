@@ -37,4 +37,6 @@ public interface PlaylistRepository extends JpaRepository<Playlist, Long>, JpaSp
             return cb.and(predicates.toArray(new Predicate[0]));
         }, request.pageable());
     }
+
+
 }

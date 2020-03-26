@@ -22,6 +22,8 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Constraint(validatedBy = {})
 public @interface Login {
     String message() default "{javax.validation.constraints.NotNull.message}";
-    Class<?>[] groups() default { };
-    Class<? extends Payload>[] payload() default { };
+
+    Class<?>[] groups() default {};
+
+    Class<? extends Payload>[] payload() default {};
 }

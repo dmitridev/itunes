@@ -13,13 +13,10 @@ import org.astelit.itunes.entity.Song;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
-
 @Getter
 @Setter
 @NoArgsConstructor
 public class UpdateSongRequest {
-
-    
     @NotNull
     private Long id;
 
@@ -32,5 +29,4 @@ public class UpdateSongRequest {
     private Long album;
 
     private Long playlist;
-
 }

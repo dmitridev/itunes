@@ -15,29 +15,24 @@ import java.util.Set;
 
 
 @Entity
-@Table(name="albums")
+@Table(name = "albums")
 @Getter
 @Setter
 @ManagedBean
-public class Album extends BaseEntity{
-
-
+public class Album extends BaseEntity {
     @ConfirmString
     private String title;
-
 
     private Date releaseDate;
 
     @NotNull
     private String genre;
 
-
-    @JoinColumn(name="artist_id")
+    @JoinColumn(name = "artist_id")
     @ManyToOne(fetch = FetchType.LAZY)
     private Artist artist;
 
-
-    @OneToMany(mappedBy="album",fetch=FetchType.LAZY)
+    @OneToMany(mappedBy = "album", fetch = FetchType.LAZY)
     private Set<Song> songsList = new HashSet<>();
 
 }

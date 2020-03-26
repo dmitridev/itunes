@@ -17,14 +17,14 @@ import static java.lang.annotation.ElementType.TYPE_USE;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 @NotNull
-@Min(value = -1,message="Значение не может быть отрицательным")
+@Min(value = -1, message = "Значение не может быть отрицательным")
 @Target({METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE})
 @Retention(RUNTIME)
 @Documented
 @Constraint(validatedBy = {})
-public @interface NotNegative{
+public @interface NotNegative {
 
-    String message() default "содержит недопустимые символы" ;
+    String message() default "содержит недопустимые символы";
 
     Class<?>[] groups() default {};
 

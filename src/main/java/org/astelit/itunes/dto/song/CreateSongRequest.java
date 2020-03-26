@@ -17,7 +17,6 @@ import javax.persistence.Id;
 @Getter
 @NoArgsConstructor
 public class CreateSongRequest {
-
     @ConfirmString
     private String title;
 
@@ -27,5 +26,4 @@ public class CreateSongRequest {
     private Long album;
 
     private Long playlist;
-
 }

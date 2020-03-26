@@ -15,29 +15,27 @@ import java.util.List;
 import javax.persistence.criteria.Predicate;
 
 
-public interface AlbumRepository extends JpaRepository<Album,Long>, JpaSpecificationExecutor<Album> {
+public interface AlbumRepository extends JpaRepository<Album, Long>, JpaSpecificationExecutor<Album> {
 
 
-    default Page<Album> search(AlbumSearchRequest request){
-        return findAll((Specification<Album>) (root,query,cb)->{
+    default Page<Album> search(AlbumSearchRequest request) {
+        return findAll((Specification<Album>) (root, query, cb) -> {
             List<Predicate> predicateList = new ArrayList<>();
 
 
-            if(request.getTitle() != null) {
+            if (request.getTitle() != null) {
                 predicateList.add(cb.like(root.get("artist").get("name"), request.getLikeTitle()));
-                predicateList.add(cb.equal(root.get("artist").get("name"), request.getLikeTitle()));
                 query.orderBy(cb.desc(root.get("updatedAt")));
             }
 
-            if(request.getGenre() != null) {
+            if (request.getGenre() != null) {
                 predicateList.add(cb.like(root.get("artist").get("albums").get("genre"), request.getLikeGenre()));
-                predicateList.add(cb.equal(root.get("artist").get("albums").get("genre"), request.getLikeGenre()));
                 query.orderBy(cb.desc(root.get("updatedAt")));
 
             }
 
 
             return cb.or(predicateList.toArray(new Predicate[0]));
-        },request.pageable());
+        }, request.pageable());
     }
 }

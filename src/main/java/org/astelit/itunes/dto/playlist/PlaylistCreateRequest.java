@@ -18,6 +18,4 @@ public class PlaylistCreateRequest {
 
     @NotNull
     private Long author;
-
-
 }

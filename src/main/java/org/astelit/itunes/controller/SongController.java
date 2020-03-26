@@ -22,28 +22,34 @@ public class SongController {
     public final SongService songService;
 
     @PostMapping
-    public SongResponse create(@Valid @RequestBody CreateSongRequest request){
+    public SongResponse create(@Valid @RequestBody CreateSongRequest request) {
         return songService.create(request);
     }
 
     @GetMapping("{id}")
-    public SongResponse read(@PathVariable long id){
+    public SongResponse read(@PathVariable long id) {
         return songService.read(id);
     }
 
     @PatchMapping
-    public SongResponse update(@Valid @RequestBody UpdateSongRequest request){
+    public SongResponse update(@Valid @RequestBody UpdateSongRequest request) {
         return songService.update(request);
     }
 
     @DeleteMapping("{id}")
-    public SongResponse delete(@PathVariable long id){
+    public SongResponse delete(@PathVariable long id) {
         return songService.delete(id);
     }
 
     @GetMapping
-    public Page<SongResponse> search(SongSearchRequest request){return songService.search(request);}
+    public Page<SongResponse> search(SongSearchRequest request) {
+        return songService.search(request);
+    }
 
+    @PostMapping("{id}/playlist/{playlist_id}")
+    public void AddToPlaylist(@PathVariable("id") Long id, @PathVariable("playlist_id") Long playlist_id) {
+        songService.AddSongToPlaylist(id, playlist_id);
+    }
 
 
 }

@@ -15,10 +15,8 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 public class CreateAlbumRequest {
-
     @ConfirmString
     private String title;
-
 
     private Date releaseDate;
 

@@ -17,7 +17,6 @@ import javax.validation.constraints.NotNull;
 @Setter
 @Getter
 public class SongResponse extends EntityResponse {
-
     @ConfirmString
     private String title;
 
@@ -26,12 +25,10 @@ public class SongResponse extends EntityResponse {
 
     private Long album;
 
-    public SongResponse(Song song){
+    public SongResponse(Song song) {
         super(song);
         this.title = song.getTitle();
         this.duration = song.getDuration();
         this.album = song.getAlbum().getId();
     }
-
-
 }

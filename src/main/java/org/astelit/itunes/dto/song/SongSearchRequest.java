@@ -10,7 +10,6 @@ import org.springframework.data.domain.Pageable;
 @Setter
 @NoArgsConstructor
 public class SongSearchRequest {
-
     private String title;
     private String genre;
     private String artistName;
@@ -18,12 +17,23 @@ public class SongSearchRequest {
     private Integer page = 0;
     private Integer size = 10;
 
-    public Pageable pageable() {return PageRequest.of(page,size);}
+    public Pageable pageable() {
+        return PageRequest.of(page, size);
+    }
 
-    public String getLikeTitle(){return "%" + title.toUpperCase() + "%";}
-    public String getLikeGenre(){return "%" + genre.toUpperCase() + "%";}
-    public String getLikeArtistName(){return "%" + artistName.toUpperCase() + "%";}
-    public String getLikeAlbumTitle(){return "%" + albumTitle.toUpperCase() + "%";}
+    public String getLikeTitle() {
+        return "%" + title.toUpperCase() + "%";
+    }
 
+    public String getLikeGenre() {
+        return "%" + genre.toUpperCase() + "%";
+    }
 
+    public String getLikeArtistName() {
+        return "%" + artistName.toUpperCase() + "%";
+    }
+
+    public String getLikeAlbumTitle() {
+        return "%" + albumTitle.toUpperCase() + "%";
+    }
 }

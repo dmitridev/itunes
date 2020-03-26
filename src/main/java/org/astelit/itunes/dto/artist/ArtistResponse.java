@@ -18,9 +18,8 @@ public class ArtistResponse extends EntityResponse {
     @ConfirmString
     private String name;
 
-    public ArtistResponse(Artist artist){
+    public ArtistResponse(Artist artist) {
         super(artist);
         this.name = artist.getName();
     }
-
 }

@@ -5,8 +5,11 @@ import lombok.Setter;
 import org.astelit.itunes.contstraint.ConfirmString;
 import org.astelit.itunes.entity.Artist;
 import org.astelit.itunes.entity.Song;
+
 import javax.validation.constraints.NotNull;
+
 import lombok.NoArgsConstructor;
+
 import javax.persistence.Id;
 
 import java.util.Date;

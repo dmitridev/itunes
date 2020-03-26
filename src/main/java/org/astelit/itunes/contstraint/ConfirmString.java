@@ -23,7 +23,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Constraint(validatedBy = {})
 public @interface ConfirmString {
 
-    String message() default "содержит недопустимые символы" ;
+    String message() default "содержит недопустимые символы";
 
     Class<?>[] groups() default {};
 

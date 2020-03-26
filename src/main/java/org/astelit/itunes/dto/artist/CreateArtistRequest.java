@@ -14,9 +14,6 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 public class CreateArtistRequest {
-
     @ConfirmString
     private String name;
-
-
 }

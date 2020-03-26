@@ -16,31 +16,30 @@ import javax.validation.Valid;
 @RequestMapping("api/artists")
 @RequiredArgsConstructor
 public class ArtistController {
-
     public final ArtistService artistService;
 
     @PostMapping
-    public ArtistResponse create(@Valid @RequestBody CreateArtistRequest request){
+    public ArtistResponse create(@Valid @RequestBody CreateArtistRequest request) {
         return artistService.create(request);
     }
 
     @GetMapping("{id}")
-    public ArtistResponse read(@PathVariable long id){
+    public ArtistResponse read(@PathVariable long id) {
         return artistService.view(id);
     }
 
     @PatchMapping
-    public ArtistResponse update(@Valid @RequestBody UpdateArtistRequest request){
+    public ArtistResponse update(@Valid @RequestBody UpdateArtistRequest request) {
         return artistService.update(request);
     }
 
     @DeleteMapping("{id}")
-    public ArtistResponse delete(@PathVariable long id){
+    public ArtistResponse delete(@PathVariable long id) {
         return artistService.delete(id);
     }
 
     @GetMapping
-    public Page<ArtistResponse> search(ArtistSearchRequest request){
+    public Page<ArtistResponse> search(ArtistSearchRequest request) {
         return artistService.search(request);
     }
 }

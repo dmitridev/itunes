@@ -15,8 +15,15 @@ public class ArtistSearchRequest {
     private String name;
     private String genre;
 
-    public Pageable pageable(){return PageRequest.of(page,size);}
+    public Pageable pageable() {
+        return PageRequest.of(page, size);
+    }
 
-    public String getLikeName(){return "%"+ name.toUpperCase() + "%";}
-    public String getLikeGenre(){return "%" + genre.toUpperCase() + "%";}
+    public String getLikeName() {
+        return "%" + name.toUpperCase() + "%";
+    }
+
+    public String getLikeGenre() {
+        return "%" + genre.toUpperCase() + "%";
+    }
 }

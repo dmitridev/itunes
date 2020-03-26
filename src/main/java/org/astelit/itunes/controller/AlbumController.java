@@ -24,32 +24,32 @@ public class AlbumController {
     private final AlbumService albumService;
 
     @PostMapping
-    public AlbumResponse create(@Valid @RequestBody CreateAlbumRequest request){
+    public AlbumResponse create(@Valid @RequestBody CreateAlbumRequest request) {
         return albumService.create(request);
     }
 
     @PatchMapping
-    public AlbumResponse update(@Valid @RequestBody UpdateAlbumRequest request){
+    public AlbumResponse update(@Valid @RequestBody UpdateAlbumRequest request) {
         return albumService.update(request);
     }
 
     @GetMapping("{id}")
-    public AlbumResponse read(@PathVariable long id){
+    public AlbumResponse read(@PathVariable long id) {
         return albumService.read(id);
     }
 
     @DeleteMapping("{id}")
-    public AlbumResponse delete(@PathVariable long id){
+    public AlbumResponse delete(@PathVariable long id) {
         return albumService.delete(id);
     }
 
     @GetMapping
-    public Page<AlbumResponse> search(AlbumSearchRequest request){
+    public Page<AlbumResponse> search(AlbumSearchRequest request) {
         return albumService.search(request);
     }
 
     @GetMapping("{id}/songs")
-    public List<SongResponse> findSongsById(@PathVariable("id") long id){
+    public List<SongResponse> findSongsById(@PathVariable("id") long id) {
         return albumService.findSongsByAlbum(id);
     }
 

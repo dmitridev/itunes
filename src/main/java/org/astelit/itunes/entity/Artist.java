@@ -14,16 +14,10 @@ import java.util.Set;
 @Entity
 @Getter
 @Setter
-@Table(name="artists")
+@Table(name = "artists")
 public class Artist extends BaseEntity {
-
     private String name;
 
-
-    @OneToMany(mappedBy="artist",fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "artist", fetch = FetchType.LAZY)
     private List<Album> albumsList = new ArrayList<>();
-
-
-
-
 }

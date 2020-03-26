@@ -1,0 +1,25 @@
+databaseChangeLog:
+  - changeSet:
+      id: create_table_relations_on_playlist_song
+      author: dmitrit
+      tagDatabase: Version 1
+      changes:
+        - createTable:
+            tableName: relation_playlist_song
+            columns:
+              - column:
+                  name: song_id
+                  type: bigint
+                  constraints:
+                    nullable: true
+                    unique: false
+                    foreignKeyName: fk_relation_playlist_song
+                    references: songs(id)
+              - column:
+                  name: playlist_id
+                  type: bigint
+                  constraints:
+                    nullable: true
+                    unique: false
+                    foreignKeyName: fk_relation_song_playlist
+                    references: playlists(id)
