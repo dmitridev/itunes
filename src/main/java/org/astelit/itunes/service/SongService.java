@@ -3,6 +3,7 @@ package org.astelit.itunes.service;
 
 import lombok.RequiredArgsConstructor;
 import org.astelit.itunes.dto.SearchRequest;
+import org.astelit.itunes.dto.playlist.PlaylistResponse;
 import org.astelit.itunes.dto.song.CreateSongRequest;
 import org.astelit.itunes.dto.song.SongResponse;
 import org.astelit.itunes.dto.song.SongSearchRequest;
@@ -18,6 +19,7 @@ import org.astelit.itunes.repository.SongRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -96,6 +98,18 @@ public class SongService {
         }
 
         return null;
+
+    }
+
+    public List<PlaylistResponse> getPlaylists(Long id){
+        List<PlaylistSongRelation> playlists = relationsRepository.findBySongId(id);
+        List<Playlist> returnList = new ArrayList<>();
+        for(PlaylistSongRelation rel:playlists){
+            Playlist p = playlistRepository.findById(rel.getPlaylistId()).orElseThrow(PLAYLIST_NOT_FOUND);
+            returnList.add(p);
+        }
+        return returnList.stream().map(PlaylistResponse::new).collect(Collectors.toList());
+
 
     }
 

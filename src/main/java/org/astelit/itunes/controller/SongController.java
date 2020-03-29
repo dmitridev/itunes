@@ -4,6 +4,7 @@ package org.astelit.itunes.controller;
 import lombok.RequiredArgsConstructor;
 
 import org.astelit.itunes.dto.SearchRequest;
+import org.astelit.itunes.dto.playlist.PlaylistResponse;
 import org.astelit.itunes.dto.song.CreateSongRequest;
 import org.astelit.itunes.dto.song.SongResponse;
 import org.astelit.itunes.dto.song.SongSearchRequest;
@@ -49,6 +50,11 @@ public class SongController {
     @PostMapping("{id}/playlist/{playlist_id}")
     public void AddToPlaylist(@PathVariable("id") Long id, @PathVariable("playlist_id") Long playlist_id) {
         songService.AddSongToPlaylist(id, playlist_id);
+    }
+
+    @GetMapping("{id}/playlists")
+    public List<PlaylistResponse> getAllPlaylistsBySong(@PathVariable("id") Long id){
+        return songService.getPlaylists(id);
     }
 
 
