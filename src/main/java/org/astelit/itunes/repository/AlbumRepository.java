@@ -24,18 +24,22 @@ public interface AlbumRepository extends JpaRepository<Album, Long>, JpaSpecific
 
 
             if (request.getTitle() != null) {
-                predicateList.add(cb.like(root.get("artist").get("name"), request.getLikeTitle()));
-                query.orderBy(cb.desc(root.get("updatedAt")));
+                predicateList.add(cb.like(root.get("title"), request.getTitle()));
+
             }
 
             if (request.getGenre() != null) {
-                predicateList.add(cb.like(root.get("artist").get("albums").get("genre"), request.getLikeGenre()));
+                predicateList.add(cb.like(root.get("genre"), request.getGenre()));
                 query.orderBy(cb.desc(root.get("updatedAt")));
 
             }
 
+            if(request.getArtistId() != null){
+                predicateList.add(cb.equal(root.get("artist").get("id"),request.getArtistId()));
+            }
 
-            return cb.or(predicateList.toArray(new Predicate[0]));
+
+            return cb.and(predicateList.toArray(new Predicate[0]));
         }, request.pageable());
     }
 }

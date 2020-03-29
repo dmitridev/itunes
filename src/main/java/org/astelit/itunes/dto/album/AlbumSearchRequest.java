@@ -14,6 +14,8 @@ public class AlbumSearchRequest {
 
     private String genre;
 
+    private Long artistId;
+
     private Integer page = 0;
 
     private Integer size = 10;
