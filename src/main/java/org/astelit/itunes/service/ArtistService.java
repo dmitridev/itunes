@@ -2,6 +2,7 @@ package org.astelit.itunes.service;
 
 
 import lombok.RequiredArgsConstructor;
+import org.astelit.itunes.dto.album.AlbumResponse;
 import org.astelit.itunes.dto.artist.ArtistResponse;
 import org.astelit.itunes.dto.artist.ArtistSearchRequest;
 import org.astelit.itunes.dto.artist.CreateArtistRequest;
@@ -10,6 +11,10 @@ import org.astelit.itunes.entity.Artist;
 import org.astelit.itunes.repository.ArtistRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.transaction.Transactional;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.astelit.itunes.utils.Exceptions.ARTIST_NOT_FOUND;
 
@@ -48,5 +53,11 @@ public class ArtistService {
 
     public Page<ArtistResponse> search(ArtistSearchRequest request) {
         return repository.search(request).map(ArtistResponse::new);
+    }
+
+    @Transactional
+    public List<AlbumResponse> getAlbumsByArtist(Long artistId){
+        Artist artist = repository.findById(artistId).orElseThrow(ARTIST_NOT_FOUND);
+        return artist.getAlbumsList().stream().map(AlbumResponse::new).collect(Collectors.toList());
     }
 }

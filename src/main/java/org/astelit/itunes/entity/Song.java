@@ -35,7 +35,7 @@ public class Song extends BaseEntity {
     @JoinColumn(name = "album_id")
     private Album album;
 
-    @ManyToMany(fetch = EAGER, mappedBy = "songs")
+    @ManyToMany(fetch = LAZY, mappedBy = "songs")
     private Set<Playlist> playlists = new HashSet<>();
 
 

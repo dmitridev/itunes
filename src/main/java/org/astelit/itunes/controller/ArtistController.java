@@ -2,6 +2,7 @@ package org.astelit.itunes.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.astelit.itunes.dto.SearchRequest;
+import org.astelit.itunes.dto.album.AlbumResponse;
 import org.astelit.itunes.dto.artist.ArtistResponse;
 import org.astelit.itunes.dto.artist.ArtistSearchRequest;
 import org.astelit.itunes.dto.artist.CreateArtistRequest;
@@ -11,6 +12,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("api/artists")
@@ -41,5 +43,10 @@ public class ArtistController {
     @GetMapping
     public Page<ArtistResponse> search(ArtistSearchRequest request) {
         return artistService.search(request);
+    }
+
+    @GetMapping("{id}/albums")
+    public List<AlbumResponse> getAllAlbums(@PathVariable("id") Long id){
+        return artistService.getAlbumsByArtist(id);
     }
 }
