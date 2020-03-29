@@ -48,8 +48,8 @@ public class SongController {
     }
 
     @PostMapping("{id}/playlist/{playlist_id}")
-    public void AddToPlaylist(@PathVariable("id") Long id, @PathVariable("playlist_id") Long playlist_id) {
-        songService.AddSongToPlaylist(id, playlist_id);
+    public SongResponse AddToPlaylist(@PathVariable("id") Long id, @PathVariable("playlist_id") Long playlist_id) {
+        return songService.AddSongToPlaylist(id, playlist_id);
     }
 
     @GetMapping("{id}/playlists")
