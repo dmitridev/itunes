@@ -11,7 +11,9 @@ import org.hibernate.annotations.WhereJoinTable;
 import javax.persistence.*;
 import javax.transaction.Transactional;
 import javax.validation.constraints.NotNull;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static javax.persistence.FetchType.EAGER;
 import static javax.persistence.FetchType.LAZY;
@@ -34,10 +36,7 @@ public class Song extends BaseEntity {
     private Album album;
 
     @ManyToMany(fetch = EAGER, mappedBy = "songs")
-    private List<Playlist> playlists;
+    private Set<Playlist> playlists = new HashSet<>();
 
-    @Transactional
-    public void addToPlaylists(Playlist playlist) {
-        playlists.add(playlist);
-    }
+
 }

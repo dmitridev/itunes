@@ -25,5 +25,4 @@ public class CreateSongRequest {
 
     private Long album;
 
-    private Long playlist;
 }

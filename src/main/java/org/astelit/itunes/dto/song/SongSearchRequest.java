@@ -12,8 +12,8 @@ import org.springframework.data.domain.Pageable;
 public class SongSearchRequest {
     private String title;
     private String genre;
-    private String artistName;
-    private String albumTitle;
+    private Long artistId;
+    private Long albumId;
     private Integer page = 0;
     private Integer size = 10;
 
@@ -29,11 +29,4 @@ public class SongSearchRequest {
         return "%" + genre.toUpperCase() + "%";
     }
 
-    public String getLikeArtistName() {
-        return "%" + artistName.toUpperCase() + "%";
-    }
-
-    public String getLikeAlbumTitle() {
-        return "%" + albumTitle.toUpperCase() + "%";
-    }
 }

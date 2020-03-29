@@ -8,6 +8,13 @@ databaseChangeLog:
             tableName: relation_playlist_song
             columns:
               - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
                   name: song_id
                   type: bigint
                   constraints:

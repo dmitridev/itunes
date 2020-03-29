@@ -35,7 +35,7 @@ public class Playlist extends BaseEntity {
             joinColumns = @JoinColumn(name = "song_id"),
             inverseJoinColumns = @JoinColumn(name = "playlist_id")
     )
-    private List<Song> songs = new ArrayList<Song>();
+    private Set<Song> songs = new HashSet<Song>();
 
 
     public void AddToSongs(Song song) {

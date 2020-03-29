@@ -28,21 +28,21 @@ public interface SongRepository extends JpaRepository<Song, Long>, JpaSpecificat
             List<Predicate> predicates = new ArrayList<>();
 
             if (request.getTitle() != null) {
-                predicates.add(cb.like(root.get("title"), request.getLikeTitle()));
+                predicates.add(cb.like(root.get("title"), request.getTitle()));
             }
 
             if (request.getGenre() != null) {
-                predicates.add(cb.like(root.get("album").get("genre"), request.getLikeGenre()));
+                predicates.add(cb.like(root.get("album").get("genre"), request.getGenre()));
             }
 
-            if (request.getAlbumTitle() != null) {
-                predicates.add(cb.like(root.get("album").get("title"), request.getLikeAlbumTitle()));
+            if (request.getAlbumId() != null) {
+                predicates.add(cb.equal(root.get("album").get("id"), request.getAlbumId()));
             }
 
-            if (request.getArtistName() != null) {
-                predicates.add(cb.like(root.get("album").get("artist").get("name"), request.getLikeArtistName()));
+            if (request.getArtistId() != null) {
+                predicates.add(cb.equal(root.get("album").get("artist").get("id"), request.getArtistId()));
             }
-            return cb.or(predicates.toArray(new Predicate[0]));
+            return cb.and(predicates.toArray(new Predicate[0]));
         }, request.pageable());
     }
 

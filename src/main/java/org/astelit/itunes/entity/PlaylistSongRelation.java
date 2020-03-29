@@ -4,9 +4,7 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Getter
@@ -14,11 +12,14 @@ import java.io.Serializable;
 @Entity(name = "relation_playlist_song")
 @RequiredArgsConstructor
 public class PlaylistSongRelation implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    @Column(name = "song_id",unique = false, insertable = true, updatable = false)
+    @Column(name = "song_id",updatable = false)
     private Long songId;
 
-    @Id
-    @Column(name = "playlist_id",unique = false, insertable = true, updatable = false)
+
+    @Column(name = "playlist_id", updatable = false)
     private Long playlistId;
 }

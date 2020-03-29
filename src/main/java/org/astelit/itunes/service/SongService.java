@@ -84,19 +84,19 @@ public class SongService {
                 .collect(Collectors.toList());
     }
 
-    public void AddSongToPlaylist(Long id, Long playlistId) {
-        Playlist playlist = playlistRepository.findById(playlistId).orElseThrow(PLAYLIST_NOT_FOUND);
+    public SongResponse AddSongToPlaylist(Long id, Long playlistId) {
+        PlaylistSongRelation playlistSongRelation = new PlaylistSongRelation();
         Song song = repository.findById(id).orElseThrow(SONG_NOT_FOUND);
+        Playlist p = playlistRepository.findById(playlistId).orElseThrow(PLAYLIST_NOT_FOUND);
+        if(song != null && p != null){
+            playlistSongRelation.setSongId(id);
+            playlistSongRelation.setPlaylistId(playlistId);
+            relationsRepository.save(playlistSongRelation);
+            return new SongResponse(song);
+        }
 
-        PlaylistSongRelation psr = new PlaylistSongRelation();
-        psr.setSongId(song.getId());
-        psr.setPlaylistId(playlist.getId());
+        return null;
 
-        playlist.AddToSongs(song);
-        song.addToPlaylists(playlist);
-        relationsRepository.save(psr);
-        repository.save(song);
-        playlistRepository.save(playlist);
     }
 
 
