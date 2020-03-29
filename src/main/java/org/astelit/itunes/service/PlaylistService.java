@@ -20,6 +20,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -62,7 +63,7 @@ public class PlaylistService {
 
     public List<SongResponse> getPlaylistSongs(Long id) {
         Playlist playlist = repository.findById(id).orElseThrow(PLAYLIST_NOT_FOUND);
-        List<PlaylistSongRelation> listRelations  = relationsRepository.findByPlaylistId(id);
+        List<PlaylistSongRelation> listRelations  = new HashSet<PlaylistSongRelation>(relationsRepository.findByPlaylistId(id)).stream().collect(Collectors.toList());
         List<Song> returnList = new ArrayList<>();
         for (PlaylistSongRelation rel : listRelations){
             Song song = songRepository.findById(rel.getSongId()).orElseThrow(SONG_NOT_FOUND);
